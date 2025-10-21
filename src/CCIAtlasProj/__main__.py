@@ -25,11 +25,3 @@ if __name__ == "__main__":
     del engine
     sys.exit(exit_code)
 
-
-    # app = QtWidgets.QApplication([])
-
-    # widget = MainWindow.MyWidget()
-    # widget.resize(800, 600)
-    # widget.show()
-
-    # sys.exit(app.exec())
