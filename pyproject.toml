@@ -1,7 +1,7 @@
 [project]
 name = "CCIAtlasProj"
 version = "0.1.0"
-description = "An applicatioanipulating atlas sem projects"
+description = "An applicati for manipulating atlas sem projects"
 readme = "README.md"
 authors = [
   {name = "Anders Folkesson", email = "anders.folkesson@gu.se"}
@@ -14,7 +14,9 @@ classifiers = [
 ]
 license = {text = "MIT"}
 dependencies = [
-  "typer"
+  "typer",
+  "ccipy.utils",
+  "ccipy.atlas"
 ]
 requires-python = ">= 3.10"
 
@@ -51,7 +53,14 @@ select = [
     "I",   # isort
     "B",   # flake8-bugbear
     "UP",  # pyupgrade
+    "N",
 ]
+# --- Formatter configuration ---
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+
 
 [tool.uv]
 package = true

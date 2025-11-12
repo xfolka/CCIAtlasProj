@@ -3,12 +3,13 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 Window {
+    id: mainWin
     width: 300
     height: 200
     visible: true
     title: "Hello World"
 
-    readonly property list<string> texts: ["Hallo Welt", "Hei maailma",
+    readonly property list<string>texts: ["Hallo Welt", "Hei maailma",
                                            "Hola Mundo", "Привет мир"]
 
     function setText() {
@@ -27,7 +28,7 @@ Window {
         Button {
             text: "Click me"
             Layout.alignment: Qt.AlignHCenter
-            onClicked:  setText()
+            onClicked:  mainWin.setText()
         }
     }
-}
+}</string>
