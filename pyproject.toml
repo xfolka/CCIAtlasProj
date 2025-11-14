@@ -20,6 +20,17 @@ dependencies = [
 ]
 requires-python = ">= 3.10"
 
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["CCIAtlasProj*"]
+namespaces = true
+
+# include everything under CCIAtlasProj/data in the wheel
+[tool.setuptools.package-data]
+"CCIAtlasProj" = ["data/**/*"]
+
+
 [project.optional-dependencies]
 test = [
     "coverage",  # testing
@@ -27,7 +38,9 @@ test = [
     "ruff",  # linting
     "ty", # checking types
     "ipdb", # debugging
+    "ruff"
 ]
+
 
 [project.urls]
 bugs = "https://github.com/xfolka/CCIAtlasProj/issues"

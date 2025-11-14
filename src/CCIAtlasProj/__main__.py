@@ -2,8 +2,8 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-from .controller import Controller
-from .MainWindow import MainWidget
+from CCIAtlasProj.controller import Controller
+from CCIAtlasProj.MainWindow import MainWidget
 
 #from .cli import app
 
