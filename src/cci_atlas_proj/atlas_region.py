@@ -81,6 +81,7 @@
 """
 
 import uuid
+import math
 from importlib.resources import files
 
 from PySide6.QtXml import QDomDocument, QDomNode
@@ -154,6 +155,33 @@ class AtlasRegion:
         if ci_nodes.count() > 0:
             ci_node = ci_nodes.item(0)
             ci_node.firstChild().setNodeValue(str(index))
+            
+    def set_translation(self, x_trans, y_trans):
+        parent_transform = self.root_element.elementsByTagName("ParentTransform")
+        if parent_transform.count() > 0:
+            p_trans = parent_transform.item(0)
+            m_41 = p_trans.firstChildElement("M41")
+            m_42 = p_trans.firstChildElement("M42")
+            m_41.firstChild().setNodeValue(str(x_trans))
+            m_42.firstChild().setNodeValue(str(y_trans))
+
+    def set_rotation(self, rot):
+      
+        sin_rot = math.sin(math.radians(rot))
+        cos_rot = math.cos(math.radians(rot))
+      
+        parent_transform = self.root_element.elementsByTagName("ParentTransform")
+        if parent_transform.count() > 0:
+            p_trans = parent_transform.item(0)
+            m_11 = p_trans.firstChildElement("M11")
+            m_12 = p_trans.firstChildElement("M12")
+            m_21 = p_trans.firstChildElement("M21")
+            m_22 = p_trans.firstChildElement("M22")
+            m_11.firstChild().setNodeValue(str(cos_rot))
+            m_12.firstChild().setNodeValue(str(sin_rot))
+            m_21.firstChild().setNodeValue(str(-sin_rot))
+            m_22.firstChild().setNodeValue(str(cos_rot))
+
 
     # def save_to_file(self, file_path: Path):
     #     file = open(file_path, "w")

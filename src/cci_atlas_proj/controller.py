@@ -19,7 +19,7 @@ class Controller(QObject):
         self.protocols_model = CCIAtlasProtocolModel()
         doc = self.load_file_to_dom(files(data) / "Protocols-V1.0.xml")
         self.protocols_model.load_from_dom(doc)
-
+        
     def load_file_to_dom(self, file_name: str) -> QDomDocument:
         doc = QDomDocument()
         file = open(file_name)
@@ -42,7 +42,9 @@ class Controller(QObject):
         path = Path(str_path)
         if path.suffix != ".a5proj":
             str_path += ".a5proj"
+        path = Path(str_path)
             
+        self.atlas_model.update_name(path.name)
         file = open(str_path, "w")
         file.write(self.atlas_model.get_document().toString(indent=2))
         file.close()
@@ -53,8 +55,10 @@ class Controller(QObject):
     def get_protocols_model(self) -> None | CCIAtlasProtocolModel:
         return self.protocols_model
 
-    def create_new_region(self, geometry: AtlasGeometry, protocol_uid: str) -> None:
+    def create_new_region(self, geometry: AtlasGeometry, protocol_uid: str, x_trans, y_trans, rot) -> None:
         region: AtlasRegion = AtlasRegion(geometry, protocol_uid)
+        region.set_translation(x_trans, y_trans)
+        region.set_rotation(rot)
         res = self.atlas_model.add_atlas_region(region.to_dom_node())
         if not res:
             print("Failed to add region to model")

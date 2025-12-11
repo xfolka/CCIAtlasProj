@@ -13,8 +13,8 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-
-from cci_atlas_proj.atlas_geometry import AtlasRectangle
+from cci_atlas_proj.region_tab_ui import  ShapeTabWidget
+from cci_atlas_proj.atlas_geometry import AtlasRectangle, AtlasOval
 from cci_atlas_proj.controller import Controller
 
 
@@ -23,6 +23,7 @@ class MainWidget(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Two Section Layout with Menu Bar")
+        self.resize(1024, 700)
 
         # Central widget and layout
         central_widget = QWidget()
@@ -49,6 +50,7 @@ class MainWidget(QMainWindow):
         # # rightSection.setStyleSheet('background-color: lightgreen;')
         main_layout.addWidget(left_section)
         main_layout.addWidget(new_reqion_view)
+        
         # main_layout.addWidget(stitch_dir_view)
         # main_layout.addWidget(s_dir_info_view)
 
@@ -106,6 +108,8 @@ class MainWidget(QMainWindow):
         self.new_region_btn.setEnabled(False)
 
         main_layout.addWidget(region_label)
+        self.shape_tab_widget = ShapeTabWidget()
+        main_layout.addWidget(self.shape_tab_widget)
         main_layout.addWidget(protocol_label)
         main_layout.addWidget(self.protocol_combo_box)
         main_layout.addWidget(self.new_region_btn)
@@ -134,10 +138,24 @@ class MainWidget(QMainWindow):
     def create_new_region(self):
         if self.controller:
             doc = self.controller.get_atlas_model().get_document()
-            geometry = AtlasRectangle(x=1000, y=2000, w=1000, h=1000, dom_doc=doc)
+            name, x, y, width, height, rot = self.shape_tab_widget.get_current_geometry_data()
+            if name == "Rectangle":
+                geometry = AtlasRectangle(0, 0, width, height, dom_doc=doc)
+            if name == "Oval":
+                geometry = AtlasOval(0, 0, width, height, dom_doc=doc)
+                
             prot_data = self.protocol_combo_box.currentData()
             prot_uid = prot_data[1]
-            self.controller.create_new_region(geometry, prot_uid)
+            self.controller.create_new_region(geometry, prot_uid, x, y, rot)
+
+    def load_project_file(self, file_path: str):
+        if self.controller:
+            self.controller.load_file(file_path)
+            atlas_model = self.controller.get_atlas_model()
+            self.proj_tree_view.setModel(atlas_model)
+            self.proj_dir_view.setModel(atlas_model)
+            self.proj_dir_view.setRootIndex(atlas_model.get_region_set_index())
+            self.new_region_btn.setEnabled(True)
 
     def _open_project(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -147,14 +165,8 @@ class MainWidget(QMainWindow):
             filter="Atlas Project Files (*.a5proj *.xml)",
         )
 
-        if file_path and self.controller:
-            self.controller.load_file(file_path)
-            atlas_model = self.controller.get_atlas_model()
-            self.proj_tree_view.setModel(atlas_model)
-            self.proj_dir_view.setModel(atlas_model)
-            self.proj_dir_view.setRootIndex(atlas_model.get_region_set_index())
-            self.new_region_btn.setEnabled(True)
-
+        self.load_project_file(file_path)
+        
     def _save_project(self):
         file_path, _ = QFileDialog.getSaveFileName(
             parent=self,

@@ -1,7 +1,9 @@
 import sys
+from importlib.resources import files
 
 from PySide6.QtWidgets import QApplication
 
+from cci_atlas_proj import data
 from cci_atlas_proj.controller import Controller
 from cci_atlas_proj.main_window import MainWidget
 
@@ -26,6 +28,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = MainWidget()
     win.connect_controller(controller)
+    win.load_project_file(files(data) / "empty-project.a5proj")
     win.show()
     exit_code = app.exec()
     sys.exit(exit_code)
