@@ -1,5 +1,5 @@
 [project]
-name = "CCIAtlasProj"
+name = "cci_atlas_proj"
 version = "0.1.0"
 description = "An applicati for manipulating atlas sem projects"
 readme = "README.md"
@@ -23,12 +23,12 @@ requires-python = ">= 3.10"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["CCIAtlasProj*"]
+include = ["cci_atlas_proj*"]
 namespaces = true
 
-# include everything under CCIAtlasProj/data in the wheel
+# include everything under cci_atlas_proj/data in the wheel
 [tool.setuptools.package-data]
-"CCIAtlasProj" = ["data/**/*"]
+"cci_atlas_proj" = ["data/**/*"]
 
 
 [project.optional-dependencies]
@@ -43,12 +43,12 @@ test = [
 
 
 [project.urls]
-bugs = "https://github.com/xfolka/CCIAtlasProj/issues"
-changelog = "https://github.com/xfolka/CCIAtlasProj/blob/master/changelog.md"
-homepage = "https://github.com/xfolka/CCIAtlasProj"
+bugs = "https://github.com/xfolka/cci_atlas_proj/issues"
+changelog = "https://github.com/xfolka/cci_atlas_proj/blob/master/changelog.md"
+homepage = "https://github.com/xfolka/cci_atlas_proj"
 
 [project.scripts]
-CCIAtlasProj = "CCIAtlasProj.cli:app"
+cci_atlas_proj = "cci_atlas_proj.cli:app"
 
 [tool.ty]
 # All rules are enabled as "error" by default; no need to specify unless overriding.
