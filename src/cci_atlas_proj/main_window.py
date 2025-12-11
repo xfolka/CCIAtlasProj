@@ -1,7 +1,5 @@
-import random
+#import random
 
-from controller import Controller
-from atlas_geometry import AtlasRectangle
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import (
     QComboBox,
@@ -15,6 +13,9 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+
+from cci_atlas_proj.atlas_geometry import AtlasRectangle
+from cci_atlas_proj.controller import Controller
 
 
 class MainWidget(QMainWindow):
@@ -59,9 +60,14 @@ class MainWidget(QMainWindow):
 
         self.open_proj_action = QAction("Open atlas proj", self)
         self.open_proj_action.triggered.connect(self._open_project)
+        
+        self.save_proj_action = QAction("Save atlas proj", self)
+        self.save_proj_action.triggered.connect(self._save_project)
+        
         file_menu.addAction(self.open_proj_action)
+        file_menu.addAction(self.save_proj_action)
         file_menu.addAction(exit_action)
-
+        
         self.controller = None
 
     def _setup_stitch_dir_view(self):
@@ -92,11 +98,16 @@ class MainWidget(QMainWindow):
         central_widget.setLayout(main_layout)
 
         region_label = QLabel("Create New Region")
+        protocol_label = QLabel("select Protocol:")
+        self.protocol_combo_box = QComboBox()
+        
         self.new_region_btn = QPushButton("New Region")
         self.new_region_btn.clicked.connect(self.create_new_region)
         self.new_region_btn.setEnabled(False)
 
         main_layout.addWidget(region_label)
+        main_layout.addWidget(protocol_label)
+        main_layout.addWidget(self.protocol_combo_box)
         main_layout.addWidget(self.new_region_btn)
 
         return central_widget
@@ -124,7 +135,9 @@ class MainWidget(QMainWindow):
         if self.controller:
             doc = self.controller.get_atlas_model().get_document()
             geometry = AtlasRectangle(x=1000, y=2000, w=1000, h=1000, dom_doc=doc)
-            self.controller.create_new_region(geometry)
+            prot_data = self.protocol_combo_box.currentData()
+            prot_uid = prot_data[1]
+            self.controller.create_new_region(geometry, prot_uid)
 
     def _open_project(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -142,8 +155,28 @@ class MainWidget(QMainWindow):
             self.proj_dir_view.setRootIndex(atlas_model.get_region_set_index())
             self.new_region_btn.setEnabled(True)
 
+    def _save_project(self):
+        file_path, _ = QFileDialog.getSaveFileName(
+            parent=self,
+            caption="Select an .a5proj file",
+            dir=".",  # starting directory
+            filter="Atlas Project Files (*.a5proj *.xml)",
+        )
+
+        if file_path and self.controller:
+            self.controller.save_dom_to_file(file_path)
+
+    def _populate_protocol_combo_box(self):
+        if self.controller:
+            protocols_model = self.controller.get_protocols_model()
+            if protocols_model:
+                protos = protocols_model.get_protocols()
+                for proto in protos:
+                    self.protocol_combo_box.addItem(proto[0], proto)
+                    
     def connect_controller(self, controller: Controller):
         self.controller = controller
+        self._populate_protocol_combo_box()
         # self.proj_tree_view.setModel(self.controller.get_atlas_model())
 
         # self.open_proj_action.triggered.connect(self.controller.load_file)

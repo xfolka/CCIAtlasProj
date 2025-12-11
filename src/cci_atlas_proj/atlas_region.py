@@ -80,19 +80,37 @@
 </AtlasRegion>
 """
 
-from pathlib import Path
-from PySide6.QtXml import QDomDocument, QDomNode
-from PySide6.QtCore import QUuid
-from CCIAtlasProj.atlas_geometry import AtlasGeometry
-from CCIAtlasProj import data
+import uuid
 from importlib.resources import files
+
+from PySide6.QtXml import QDomDocument, QDomNode
+
+from cci_atlas_proj import data
+from cci_atlas_proj.atlas_geometry import AtlasGeometry
+
+
+def generate_uuid_decimal() -> int:
+  
+    # Generate a UUID (128 bits of entropy)
+    u = uuid.uuid4()
+
+    # Get the raw 16 bytes
+    raw = u.bytes
+
+    # Convert bytes → big integer (unsigned, big-endian)
+    num = int.from_bytes(raw, byteorder="big", signed=False)
+
+    #print("UUID:", u)
+    #print("As decimal:", num)
+    return num
+  
 
 class AtlasRegion:
 
     DATAFILENAME: str = "atlas_region.xml"
     CREATED_INDEX_CNT: int = 1
 
-    def __init__(self, geometry: AtlasGeometry, name: str | None = None):
+    def __init__(self, geometry: AtlasGeometry, protocol_uid: str, name: str | None = None):
 
         self.dom_document: QDomDocument = QDomDocument()
         file = open(files(data) / self.DATAFILENAME)
@@ -100,7 +118,7 @@ class AtlasRegion:
         self.root_element = self.dom_document.documentElement()
         file.close()
 
-        new_uid = QUuid.createUuid().toString()
+        new_uid = str(generate_uuid_decimal())[0:10]
         uid_nodes = self.root_element.elementsByTagName("UID")
         if uid_nodes.count() > 0:
             uid_node = uid_nodes.item(0)
@@ -117,12 +135,19 @@ class AtlasRegion:
         self.geometry: AtlasGeometry = geometry
         g_node = geometry.to_dom_node()
         self.root_element.appendChild(g_node)
+        self.set_working_protocol_uid(protocol_uid)
 
     def set_name(self, name: str):
         name_nodes = self.root_element.elementsByTagName("Name")
         if name_nodes.count() > 0:
             name_node = name_nodes.item(0)
             name_node.firstChild().setNodeValue(name)
+            
+    def set_working_protocol_uid(self, protocol_uid: str):
+        protocol_nodes = self.root_element.elementsByTagName("WorkingProtocolUID")
+        if protocol_nodes.count() > 0:
+            protocol_node = protocol_nodes.item(0)
+            protocol_node.firstChild().setNodeValue(protocol_uid)
 
     def set_created_index(self, index: int):
         ci_nodes = self.root_element.elementsByTagName("CreatedIndex")
@@ -130,10 +155,10 @@ class AtlasRegion:
             ci_node = ci_nodes.item(0)
             ci_node.firstChild().setNodeValue(str(index))
 
-    def save_to_file(self, file_path: Path):
-        file = open(file_path, "w")
-        file.write(self.dom_document.toString(indent=2))
-        file.close()
+    # def save_to_file(self, file_path: Path):
+    #     file = open(file_path, "w")
+    #     file.write(self.dom_document.toString(indent=2))
+    #     file.close()
 
     def to_dom_node(self) -> QDomNode:
         return self.root_element

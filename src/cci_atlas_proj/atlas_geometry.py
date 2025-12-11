@@ -4,9 +4,10 @@ from PySide6.QtXml import QDomElement, QDomNode, QDomText, QDomDocument
 
 
 class AtlasGeometryType(Enum):
-    RECTANGLE = "rectangle",
-    OVAL = "oval",
-    POLYGON = "polygon"
+    RECTANGLE = "Rectangle"
+    OVAL = "Oval"
+    POLYGON = "Polygon"
+
 
 #   <Geometry> these should be implemented as classes... generated xml should be able to simply be put in in the project structure
 #     <Type>Oval</Type>
@@ -22,7 +23,6 @@ class AtlasGeometryType(Enum):
 
 
 class AtlasGeometry:
-
     NODENAME: str = "Geometry"
     TYPENODENAME: str = "Type"
 
@@ -40,8 +40,8 @@ class AtlasGeometry:
 
         return qde_geom
 
-class AtlasSimpleGeom(AtlasGeometry):
 
+class AtlasSimpleGeom(AtlasGeometry):
     CENTERNAME = "Center"
     SIZENAME = "Size"
 
@@ -59,7 +59,6 @@ class AtlasSimpleGeom(AtlasGeometry):
         self.height = h
 
     def _get_dom_from_data(self, tag_name: str, x: float, y: float) -> QDomNode:
-
         qde_root: QDomElement = self.dom_doc.createElement(tag_name)
         qde_x: QDomElement = self.dom_doc.createElement("X")
         qte_x: QDomText = self.dom_doc.createTextNode(str(x))
@@ -76,33 +75,28 @@ class AtlasSimpleGeom(AtlasGeometry):
 
     def to_dom_node(self) -> QDomNode:
         root = super().to_dom_node()
-        qde_center: QDomElement= self.dom_doc.createElement(self.CENTERNAME)
-        qde_center.appendChild(self._get_dom_from_data(self.CENTERNAME, self.center_x,self.center_y))
-
-        qde_size: QDomElement= self.dom_doc.createElement(self.SIZENAME)
-        qde_size.appendChild(self._get_dom_from_data(self.CENTERNAME, self.width,self.height))
-
+        qde_center: QDomNode = self._get_dom_from_data(self.CENTERNAME, self.center_x, self.center_y)
         root.appendChild(qde_center)
-        root.appendChild(qde_size)
 
+        qde_size: QDomNode = self._get_dom_from_data(self.SIZENAME, self.width, self.height)
+
+        root.appendChild(qde_size)
         return root
 
-class AtlasRectangle(AtlasSimpleGeom):
 
+class AtlasRectangle(AtlasSimpleGeom):
     def __init__(self, x: float, y: float, w: float, h: float, dom_doc: QDomDocument):
         super().__init__(AtlasGeometryType.RECTANGLE, dom_doc)
-        self.set(x,y,w,h)
+        self.set(x, y, w, h)
 
 
 class AtlasOval(AtlasSimpleGeom):
-
     def __init__(self, x: float, y: float, w: float, h: float, dom_doc: QDomDocument):
         super().__init__(AtlasGeometryType.OVAL, dom_doc)
-        self.set(x,y,w,h)
+        self.set(x, y, w, h)
 
 
 class AtlasPolygon(AtlasGeometry):
-    def __init__(self, vertices: list[tuple[float,float]], dom_doc: QDomDocument):
+    def __init__(self, vertices: list[tuple[float, float]], dom_doc: QDomDocument):
         super().__init__(AtlasGeometryType.POLYGON, dom_doc)
         self.vertices = vertices
-
