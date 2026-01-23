@@ -1,6 +1,7 @@
 from enum import Enum
 
 from PySide6.QtXml import QDomElement, QDomNode, QDomText, QDomDocument
+from ccipy.atlas.cci_atlas_xml_model import CCIAtlasXmlItem
 
 
 class AtlasGeometryType(Enum):
@@ -57,6 +58,12 @@ class AtlasSimpleGeom(AtlasGeometry):
         self.center_y = y
         self.width = w
         self.height = h
+        
+    def get_width(self):
+        return self.width
+    
+    def get_height(self):
+        return self.height
 
     def _get_dom_from_data(self, tag_name: str, x: float, y: float) -> QDomNode:
         qde_root: QDomElement = self.dom_doc.createElement(tag_name)
@@ -100,3 +107,34 @@ class AtlasPolygon(AtlasGeometry):
     def __init__(self, vertices: list[tuple[float, float]], dom_doc: QDomDocument):
         super().__init__(AtlasGeometryType.POLYGON, dom_doc)
         self.vertices = vertices
+
+
+def create_geometry(item: CCIAtlasXmlItem, doc: QDomDocument) -> AtlasGeometry | None:
+    if item.get_node_name() != "Geometry":
+        raise ValueError("Not a Geometry node")
+    
+    t = ""
+    x = 0
+    y = 0
+    w = 0
+    h = 0
+    for cn in range(item.get_nr_of_children()):
+        child = item.child(cn)
+        match child.get_node_name():
+            case "Type":
+                t = child.get_node_text()
+            case "Center":
+                x = float(child.child(0).get_node_text())
+                y = float(child.child(1).get_node_text())
+            case "Size":
+                w = float(child.child(0).get_node_text())
+                h = float(child.child(1).get_node_text())
+                
+    match t:
+        case "Rectangle":
+            return AtlasRectangle(x, y, w, h, doc)
+        # case Oval:
+            #     return 
+            # case Polygon
+        case _:
+            return None

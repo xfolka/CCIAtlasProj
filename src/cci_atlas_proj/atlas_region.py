@@ -87,7 +87,9 @@ from importlib.resources import files
 from PySide6.QtXml import QDomDocument, QDomNode
 
 from cci_atlas_proj import data
-from cci_atlas_proj.atlas_geometry import AtlasGeometry
+from cci_atlas_proj.atlas_geometry import AtlasGeometry, create_geometry
+from cci_atlas_proj.atlas_transform import AtlasTransform
+from ccipy.atlas.cci_atlas_xml_model import CCIAtlasXmlItem
 
 
 def generate_uuid_decimal() -> int:
@@ -111,7 +113,20 @@ class AtlasRegion:
     DATAFILENAME: str = "atlas_region.xml"
     CREATED_INDEX_CNT: int = 1
 
-    def __init__(self, geometry: AtlasGeometry, protocol_uid: str, name: str | None = None):
+    def __init__(self, item: CCIAtlasXmlItem, doc: QDomDocument):
+        if item.get_node_name() != "AtlasRegion":
+            raise ValueError("Not an AtlasRegion Node")
+        
+        for cn in range(item.get_nr_of_children()):
+            child = item.child(cn)
+            if child.get_node_name() == "Name":
+                self.name = child.get_node_text()
+            elif child.get_node_name() == "ParentTransform":
+                self.transform = AtlasTransform(child)
+            elif child.get_node_name() == "Geometry":
+                self.geometry = create_geometry(child, doc)
+
+    def create(self, geometry: AtlasGeometry, protocol_uid: str, name: str | None = None):
 
         self.dom_document: QDomDocument = QDomDocument()
         file = open(files(data) / self.DATAFILENAME)
@@ -155,7 +170,13 @@ class AtlasRegion:
         if ci_nodes.count() > 0:
             ci_node = ci_nodes.item(0)
             ci_node.firstChild().setNodeValue(str(index))
-            
+
+    def get_transform(self) -> AtlasTransform:
+        return self.transform
+      
+    def get_geometry(self) -> AtlasGeometry:
+        return self.geometry
+
     def set_translation(self, x_trans, y_trans):
         parent_transform = self.root_element.elementsByTagName("ParentTransform")
         if parent_transform.count() > 0:

@@ -28,7 +28,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = MainWidget()
     win.connect_controller(controller)
-    win.load_project_file(files(data) / "empty-project.a5proj")
+    win.load_project_file("../testatlasprojs/simple/simple_image.a5proj")
     win.show()
     exit_code = app.exec()
     sys.exit(exit_code)

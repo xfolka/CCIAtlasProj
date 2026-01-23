@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 from cci_atlas_proj.region_tab_ui import  ShapeTabWidget
 from cci_atlas_proj.atlas_geometry import AtlasRectangle, AtlasOval
 from cci_atlas_proj.controller import Controller
+from cci_atlas_proj.image_widget import ImageDrawView
 
 
 class MainWidget(QMainWindow):
@@ -23,7 +24,7 @@ class MainWidget(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Two Section Layout with Menu Bar")
-        self.resize(1024, 700)
+        #self.resize(1024, 700)
 
         # Central widget and layout
         central_widget = QWidget()
@@ -36,20 +37,33 @@ class MainWidget(QMainWindow):
         left_layout = QVBoxLayout()
         self.proj_tree_view = QTreeView()
         self.proj_dir_view = QTreeView()
-
+        self.data_set_view = QTreeView()
+        
+        self.image_widget = ImageDrawView()
+        center_layout = QVBoxLayout()
+        center_section = QWidget()
+        center_layout.addWidget(self.image_widget)
+        center_section.setLayout(center_layout)
+        
+        left_layout.addWidget(QLabel("Project tree"))
         left_layout.addWidget(self.proj_tree_view)
+        left_layout.addWidget(QLabel("RegionSet"))
         left_layout.addWidget(self.proj_dir_view)
+        left_layout.addWidget(QLabel("DataSet"))
+        left_layout.addWidget(self.data_set_view)
         # self.projTreeView.setStyleSheet('background-color: lightblue;')
         # self.projDirView.setStyleSheet('background-color: red;')
         left_section.setLayout(left_layout)
 
         new_reqion_view = self._setup_new_region_view()
+        new_reqion_view.setVisible(False)
 
         # stitch_dir_view = self._setup_stitch_dir_view()
         # s_dir_info_view = self._setup_s_dir_info_view()
         # # rightSection.setStyleSheet('background-color: lightgreen;')
         main_layout.addWidget(left_section)
         main_layout.addWidget(new_reqion_view)
+        main_layout.addWidget(center_section)
         
         # main_layout.addWidget(stitch_dir_view)
         # main_layout.addWidget(s_dir_info_view)
@@ -152,10 +166,27 @@ class MainWidget(QMainWindow):
         if self.controller:
             self.controller.load_file(file_path)
             atlas_model = self.controller.get_atlas_model()
+            if atlas_model is None:
+                return
+            
             self.proj_tree_view.setModel(atlas_model)
             self.proj_dir_view.setModel(atlas_model)
             self.proj_dir_view.setRootIndex(atlas_model.get_region_set_index())
+            self.data_set_view.setModel(atlas_model)
+            self.data_set_view.setRootIndex(atlas_model.get_data_set_index())
             self.new_region_btn.setEnabled(True)
+            
+            img_index = atlas_model.find_index_by_name("PlaceableImage", atlas_model.get_data_set_index())
+            data = self.controller.load_image_from_index(img_index)
+            if data is None:
+                return
+            
+            image, transform = data
+            self.image_widget.load_image_from_image(image, transform)
+            
+            regions = self.controller.get_atlas_regions()
+            self.image_widget.add_regions(regions)
+            return
 
     def _open_project(self):
         file_path, _ = QFileDialog.getOpenFileName(

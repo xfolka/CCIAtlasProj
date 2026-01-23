@@ -57,6 +57,8 @@ cci_atlas_proj = "cci_atlas_proj.cli:app"
 
 [tool.ruff]
 line-length = 120
+indent-width = 4
+
 
 [tool.ruff.lint]
 select = [
@@ -72,6 +74,7 @@ select = [
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
 skip-magic-trailing-comma = false
 
 
