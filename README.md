@@ -1,17 +1,21 @@
 # CCIAtlasProj
 
+
+
+
 ![PyPI version](https://img.shields.io/pypi/v/CCIAtlasProj.svg)
 [![Documentation Status](https://readthedocs.org/projects/CCIAtlasProj/badge/?version=latest)](https://CCIAtlasProj.readthedocs.io/en/latest/?version=latest)
 
-An applicatioanipulating atlas sem projects
+An application for manipulating atlas sem projects.
+This is very much WIP!
 
-* PyPI package: https://pypi.org/project/CCIAtlasProj/
-* Free software: MIT License
-* Documentation: https://CCIAtlasProj.readthedocs.io.
+**Current problems:**
+- image/geometry alignment when reading project is off
+- limited support for read/create geometries
 
-## Features
+## A note about requirements
+Currently the requirements.txt file lists the ccipy-* packages as local installs. They are available on github at https://github.com/CCI-GU-Sweden/CCIPyUtils and you will need to update the requirements accordingly.
 
-* TODO
 
 ## Credits
 
