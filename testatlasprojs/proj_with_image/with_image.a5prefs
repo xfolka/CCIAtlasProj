@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<F-Project-Preference Version="2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://fibics.com/xsd/FibicsAtlasProjectPreference_2_1.xsd">
+  <OriginalRoot>Y:\Common\fibics_tests\proj_with_image\</OriginalRoot>
+  <ViewMode>HolderCentric</ViewMode>
+  <ViewCenter>
+    <X>22233.408203125</X>
+    <Y>-15954.275390625</Y>
+  </ViewCenter>
+  <ViewSize>282188.499633585</ViewSize>
+  <ChamberStatus/>
+</F-Project-Preference>

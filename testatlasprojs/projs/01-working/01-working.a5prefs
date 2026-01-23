@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<F-Project-Preference Version="2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://fibics.com/xsd/FibicsAtlasProjectPreference_2_1.xsd">
+  <OriginalRoot>D:\REMOTE\Anders\01-working\</OriginalRoot>
+  <ViewMode>HolderCentric</ViewMode>
+  <ViewCenter>
+    <X>9185.2333984375</X>
+    <Y>14398.234375</Y>
+  </ViewCenter>
+  <ViewSize>29202.23490705</ViewSize>
+  <ChamberStatus>
+    <Beam>SEM</Beam>
+    <Stage>
+      <X>-63874.277339139</X>
+      <Y>-50025.8593136659</Y>
+      <Z>37062.9102056597</Z>
+      <R>0.218166367967747</R>
+      <T>0</T>
+      <M>0</M>
+    </Stage>
+    <FOV>6175.42138671875</FOV>
+    <ScanRotation>0</ScanRotation>
+    <RelativeBeamOffset>
+      <X>0</X>
+      <Y>0</Y>
+    </RelativeBeamOffset>
+  </ChamberStatus>
+</F-Project-Preference>

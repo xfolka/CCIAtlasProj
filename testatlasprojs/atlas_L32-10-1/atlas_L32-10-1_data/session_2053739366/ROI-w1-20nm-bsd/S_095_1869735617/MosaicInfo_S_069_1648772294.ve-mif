@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<MosaicInfo ID="1244032553"><Application>Atlas Engine v5.3.5</Application><Date>2025-04-25T15:18:54.178+02:00</Date><ReferenceInfo><Name>S_069_1648772294</Name><Stage><X>-57758.965</X><Y>-71242.91</Y><Z>43100.43</Z><M>0</M><Tilt>0</Tilt><Rot>12.506</Rot></Stage><Beam><ScanRot>0.973387539386749</ScanRot><WD>0.00596160907298327</WD><StigX>1.82475674152374</StigX><StigY>0.653022885322571</StigY></Beam></ReferenceInfo><SetupInfo><SetupFilename></SetupFilename><Stage><X>-57758.9648140907</X><Y>-71242.910181821</Y><Z>43100.4297616394</Z><M>0</M><Tilt>0</Tilt><Rot>12.50599554575</Rot></Stage><Beam><ScanRot>0.973387539386749</ScanRot><WD>0.00596160907298327</WD><StigX>1.82475674152374</StigX><StigY>0.653022885322571</StigY><Aperture>2,0 kV | 500 pA [An]</Aperture><AccV>2000</AccV><BeamI>499.999998002099</BeamI><ExtractorV>3790</ExtractorV><ExtractorI>0.000156109381350689</ExtractorI><FilamentI>2.28000020980835</FilamentI><ScanRot_PostAlignment>0.973387539386749</ScanRot_PostAlignment></Beam><Signal><Detector>Sense BSD</Detector><Contrast>6.90000009536743</Contrast><Brightness>19.3999996185303</Brightness><DetectorInfo><item name="BSD Q1">Normal</item><item name="BSD Q2">Off</item><item name="BSD Q3">Off</item><item name="BSD Q4">Off</item><item name="BSD Gain">Ultra High</item><item name="BSD AutoRange">Off</item><item name="BSD Bandwidth">DC</item><item name="BSD FastScan">Off</item><item name="BSD AutoLevel">On</item></DetectorInfo></Signal><Stage_PostAlignment><X>-57758.9648140907</X><Y>-71242.910181821</Y><Z>43100.4297616394</Z><M>0</M><Tilt>0</Tilt><Rot>12.50599554575</Rot></Stage_PostAlignment></SetupInfo><Folder>D:\users\Zeinab\Array-tomo\atlas_L32-10-1\atlas_L32-10-1_data\session_2053739366\ROI-w1-20nm-bsd\S_069_1648772294</Folder><Folder2></Folder2><Width unit="um">140.015512704849</Width><Height unit="um">403.244676589966</Height><PixelSize unit="nm">20.0022168840681</PixelSize><DwellTime unit="ns">6400</DwellTime><LineAveraging>1</LineAveraging><StageSettleTime unit="s">4</StageSettleTime><TileInfo><FOV unit="um">140.015518188477</FOV><TileWidth>7000</TileWidth><TileHeight>7000</TileHeight><TileOverlapXum>8.39999961853027</TileOverlapXum><TileOverlapYum>8.39999961853027</TileOverlapYum><NumTilesX>1</NumTilesX><NumTilesY>3</NumTilesY><AutoTune><AutoBeamTuneAlgorithms>1</AutoBeamTuneAlgorithms><AutoBeamTuneSaveDebugData>false</AutoBeamTuneSaveDebugData><AutoFocusFrequency>4</AutoFocusFrequency><AutoStigFrequency>1</AutoStigFrequency><AutoFocusAndStigFrequency>0</AutoFocusAndStigFrequency><AutoFocusRepeat>false</AutoFocusRepeat><AutoFocusInitialThreshold>1000</AutoFocusInitialThreshold><AutoFocusStepThreshold>1000</AutoFocusStepThreshold><AutoStigInitialThreshold>100</AutoStigInitialThreshold><AutoStigStepThreshold>100</AutoStigStepThreshold><AutoTuneFOVRatio>5</AutoTuneFOVRatio><AutoFocusDwellTime>3.20000004768372</AutoFocusDwellTime><AutoFocusLineAvg>2</AutoFocusLineAvg><AutoFocusRange>1.49999996210681E-5</AutoFocusRange><AutoStigRange>1</AutoStigRange><AutoStigAndFocus><FOV>102.411346435547</FOV><PixelSize>0.100011080503464</PixelSize><DwellTime>3.20000004768372</DwellTime><LineAvg>2</LineAvg><ROILeft>-0.200000002980232</ROILeft><ROIRight>0.200000002980232</ROIRight><ROITop>-0.200000002980232</ROITop><ROIBottom>0.200000002980232</ROIBottom><SystemDetectorSettings type="Zeiss"><NumChannels>2</NumChannels><Channel>3</Channel><Signal>0</Signal><Mode>0</Mode><Det0><Name>Sense BSD</Name><B>19.3999996185303</B><C>6.90000009536743</C><Gain>1</Gain></Det0><Det1><Name>InLens</Name><B>49.3418998718262</B><C>25.8918991088867</C><Gain>1</Gain></Det1></SystemDetectorSettings><Focus><NominalFocus>0.00595896365121007</NominalFocus><FocusStep>2.49999993684469E-5</FocusStep><FocusRange>9.99999974737875E-5</FocusRange><FocusMaxAttempts>3</FocusMaxAttempts><FocusDoStigCheck>true</FocusDoStigCheck></Focus><Stig><StigStep>3</StigStep><StigConvergence>0.900000035762787</StigConvergence><StigMaxAttempts>4</StigMaxAttempts></Stig><Quality><MetricBest>-1</MetricBest><MetricBkg>-1</MetricBkg><MetricStdDev>-1</MetricStdDev><MetricSuccessTolerance>-1</MetricSuccessTolerance></Quality></AutoStigAndFocus><AutoBrightnessFrequency>0</AutoBrightnessFrequency><AutoContrastFrequency>0</AutoContrastFrequency><AutoBandCFrequency>0</AutoBandCFrequency><AutoBCFOVRatio>10</AutoBCFOVRatio><AutoBrightnessInitialThreshold>100</AutoBrightnessInitialThreshold><AutoBrightnessStepThreshold>100</AutoBrightnessStepThreshold><AutoContrastInitialThreshold>100</AutoContrastInitialThreshold><AutoContrastStepThreshold>100</AutoContrastStepThreshold><AutoBCScanSpeed>-6</AutoBCScanSpeed><AutoBCDelay>10</AutoBCDelay><FocusVerified>false</FocusVerified></AutoTune></TileInfo><Tiles>
+    <Tile row="1" col="1">
+      <StartTime>2025-04-25T15:19:36.337+02:00</StartTime>
+      <TargetStageX>-57761.2008657821</TargetStageX>
+      <TargetStageY>-71111.3144135908</TargetStageY>
+      <StageX>-57761.1913765998</StageX>
+      <StageY>-71111.3086187819</StageY>
+      <WD>0.00595816085115075</WD>
+      <StigX>2.17952346801758</StigX>
+      <StigY>0.815733909606934</StigY>
+      <Detector>Sense BSD</Detector>
+      <Brightness>19.3999996185303</Brightness>
+      <Contrast>6.90000009536743</Contrast>
+      <Filename>D:\users\Zeinab\Array-tomo\atlas_L32-10-1\atlas_L32-10-1_data\session_2053739366\ROI-w1-20nm-bsd\S_069_1648772294\Tile_r1-c1_S_069_1648772294.tif</Filename>
+    </Tile>
+    <Tile row="2" col="1">
+      <StartTime>2025-04-25T15:24:42.680+02:00</StartTime>
+      <TargetStageX>-57758.9649971244</TargetStageX>
+      <TargetStageY>-71242.9100078487</TargetStageY>
+      <StageX>-57758.9648140907</StageX>
+      <StageY>-71242.910181821</StageY>
+      <WD>0.00595816085115075</WD>
+      <StigX>2.17952346801758</StigX>
+      <StigY>0.815733909606934</StigY>
+      <Detector>Sense BSD</Detector>
+      <Brightness>19.3999996185303</Brightness>
+      <Contrast>6.90000009536743</Contrast>
+      <Filename>D:\users\Zeinab\Array-tomo\atlas_L32-10-1\atlas_L32-10-1_data\session_2053739366\ROI-w1-20nm-bsd\S_069_1648772294\Tile_r2-c1_S_069_1648772294.tif</Filename>
+    </Tile>
+    <Tile row="3" col="1">
+      <StartTime>2025-04-25T15:30:39.463+02:00</StartTime>
+      <TargetStageX>-57756.7291284668</TargetStageX>
+      <TargetStageY>-71374.5056021067</TargetStageY>
+      <StageX>-57756.7382515816</StageX>
+      <StageY>-71374.51174486</StageY>
+      <WD>0.00595537945628166</WD>
+      <StigX>2.17952346801758</StigX>
+      <StigY>0.815733909606934</StigY>
+      <Detector>Sense BSD</Detector>
+      <Brightness>19.3999996185303</Brightness>
+      <Contrast>6.90000009536743</Contrast>
+      <Filename>D:\users\Zeinab\Array-tomo\atlas_L32-10-1\atlas_L32-10-1_data\session_2053739366\ROI-w1-20nm-bsd\S_069_1648772294\Tile_r3-c1_S_069_1648772294.tif</Filename>
+    </Tile>
+  </Tiles><Log><Event tile="-1" row="-1" col="-1"><Time>2025-04-25T15:18:54.267+02:00</Time><Message>MosaicTool.Execute prep2 setting FOV to 140,0um</Message></Event><Event tile="-1" row="-1" col="-1"><Time>2025-04-25T15:18:54.267+02:00</Time><Message>MosaicTool.Execute prep2 FOV was set to 140,0um</Message></Event>  <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:18:54.305+02:00</Time>
+      <Message>Executing Tile</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:18:54.306+02:00</Time>
+      <Message>Moving to x=-57761,076, y=-71118,634</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:18:55.953+02:00</Time>
+      <Message>Performing Auto Focus</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:18:55.954+02:00</Time>
+      <Message>Prior to AutoTune, controller FOV=140,0um, desired FOV=102,4um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:09.348+02:00</Time>
+      <Message>After AutoTune, controller FOV=140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:09.348+02:00</Time>
+      <Message>Auto Focus completed in 13,4 s.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:09.348+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune setting FOV to 140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:09.348+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune FOV was set to 140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:09.349+02:00</Time>
+      <Message>Auto Focus calculated WD=5,95816 mm</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:10.348+02:00</Time>
+      <Message>Auto Focus focus - target focus: Diff = -3,45 um.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:10.348+02:00</Time>
+      <Message>Performing Auto Stigmation</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:10.350+02:00</Time>
+      <Message>Prior to AutoTune, controller FOV=140,0um, desired FOV=102,4um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:30.195+02:00</Time>
+      <Message>After AutoTune, controller FOV=140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:30.196+02:00</Time>
+      <Message>Auto Stigmation completed in 19,8 s.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:30.196+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune setting FOV to 140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:30.196+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune FOV was set to 140,0um</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:30.197+02:00</Time>
+      <Message>Auto Stigmation calculated stig X=2,18 % and stig Y=0,82 %</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:31.191+02:00</Time>
+      <Message>Auto Stigmation stig X - target stig X: Diff = 0,35%.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:31.191+02:00</Time>
+      <Message>Auto Stigmation stig Y - target stig Y: Diff = 0,16%.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:31.193+02:00</Time>
+      <Message>Moving to x=-57761,201, y=-71111,314</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:32.345+02:00</Time>
+      <Message>In position. Waiting for stage to settle.</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:36.337+02:00</Time>
+      <Message>Acquiring Image - 15:19:36</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:19:36.348+02:00</Time>
+      <Message>MosaicTool.Execute recording TiffInfo FOV of 140,0um with factors (1,0,1,0)</Message>
+    </Event>
+    <Event tile="0" row="1" col="1">
+      <Time>2025-04-25T15:24:36.839+02:00</Time>
+      <Message>Tile Complete - 15:24:36</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:24:36.886+02:00</Time>
+      <Message>Executing Tile</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:24:36.887+02:00</Time>
+      <Message>Moving to x=-57758,965, y=-71242,910</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:24:38.680+02:00</Time>
+      <Message>In position. Waiting for stage to settle.</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:24:42.679+02:00</Time>
+      <Message>Acquiring Image - 15:24:42</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:24:42.696+02:00</Time>
+      <Message>MosaicTool.Execute recording TiffInfo FOV of 140,0um with factors (1,0,1,0)</Message>
+    </Event>
+    <Event tile="1" row="2" col="1">
+      <Time>2025-04-25T15:30:18.137+02:00</Time>
+      <Message>Tile Complete - 15:30:18</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:18.184+02:00</Time>
+      <Message>Executing Tile</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:18.185+02:00</Time>
+      <Message>Moving to x=-57756,854, y=-71367,186</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:19.953+02:00</Time>
+      <Message>Performing Auto Focus</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:19.954+02:00</Time>
+      <Message>Prior to AutoTune, controller FOV=140,0um, desired FOV=102,4um</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:33.339+02:00</Time>
+      <Message>After AutoTune, controller FOV=140,0um</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:33.339+02:00</Time>
+      <Message>Auto Focus completed in 13,4 s.</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:33.339+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune setting FOV to 140,0um</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:33.340+02:00</Time>
+      <Message>TMosaicTool.ExecuteAutoBeamTune FOV was set to 140,0um</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:33.340+02:00</Time>
+      <Message>Auto Focus calculated WD=5,95538 mm</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:34.332+02:00</Time>
+      <Message>Auto Focus focus - target focus: Diff = -2,78 um.</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:34.332+02:00</Time>
+      <Message>Moving to x=-57756,729, y=-71374,506</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:35.455+02:00</Time>
+      <Message>In position. Waiting for stage to settle.</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:39.463+02:00</Time>
+      <Message>Acquiring Image - 15:30:39</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:30:39.464+02:00</Time>
+      <Message>MosaicTool.Execute recording TiffInfo FOV of 140,0um with factors (1,0,1,0)</Message>
+    </Event>
+    <Event tile="2" row="3" col="1">
+      <Time>2025-04-25T15:35:40.167+02:00</Time>
+      <Message>Tile Complete - 15:35:40</Message>
+    </Event>
+    <Event>
+      <Time>2025-04-25T15:35:40.172+02:00</Time>
+      <Message>Mosaic completed - 15:35:40</Message>
+    </Event>
+  </Log>  <Status>completed</Status>
+  <DateFinished>2025-04-25T15:35:40.172+02:00</DateFinished>
+</MosaicInfo>
