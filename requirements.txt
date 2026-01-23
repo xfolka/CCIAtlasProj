@@ -1,0 +1,23 @@
+-e git+ssh://git@github.com/xfolka/CCIAtlasProj.git@e16145c4cf4ef53cfe7072bfbb98264c3fba5e3d#egg=CCIAtlasProj
+-e git+ssh://git@github.com/CCI-GU-Sweden/CCIPyUtils.git@8cb18b9a8df50659d85afcbf5f16e1fe96ad1951#egg=ccipy&subdirectory=ccipy
+-e git+ssh://git@github.com/CCI-GU-Sweden/CCIPyUtils.git@8cb18b9a8df50659d85afcbf5f16e1fe96ad1951#egg=ccipy_atlas&subdirectory=ccipy-atlas
+-e git+ssh://git@github.com/CCI-GU-Sweden/CCIPyUtils.git@8cb18b9a8df50659d85afcbf5f16e1fe96ad1951#egg=ccipy_utils&subdirectory=ccipy-utils
+certifi==2025.10.5
+charset-normalizer==3.4.4
+click==8.3.0
+idna==3.11
+markdown-it-py==4.0.0
+mdurl==0.1.2
+numpy==2.3.5
+Pygments==2.19.2
+PySide6==6.10.0
+PySide6_Addons==6.10.0
+PySide6_Essentials==6.10.0
+requests==2.32.5
+rich==14.2.0
+shellingham==1.5.4
+shiboken6==6.10.0
+tifffile==2025.10.16
+typer==0.20.0
+typing_extensions==4.15.0
+urllib3==2.5.0
